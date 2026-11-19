@@ -1,0 +1,22 @@
+{% load static %}<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}TecnoAndes | Gestión de personal{% endblock %}</title>
+<link rel="stylesheet" href="{% static 'css/app.css' %}"></head>
+<body>
+<header class="topbar"><a href="{% url 'dashboard' %}" class="brand"><span class="brandmark">TA</span><span><strong>TecnoAndes S.A.C.</strong><small>Gestión corporativa de personal</small></span></a>
+{% if request.user.is_authenticated %}<div class="identity"><span>{{ request.user.get_full_name|default:request.user.username }}</span><span class="role">{{ perfil_actual.get_rol_display }}</span><form action="{% url 'logout' %}" method="post">{% csrf_token %}<button class="link-button" type="submit">Cerrar sesión</button></form></div>{% endif %}</header>
+<div class="shell">
+{% if request.user.is_authenticated %}<nav class="sidebar" aria-label="Menú principal"><div class="nav-label">OPERACIONES</div>
+<a href="{% url 'dashboard' %}">Panel de control</a>
+<a href="{% url 'asistencias' %}">Asistencias</a>
+<a href="{% url 'permisos' %}">Permisos y vacaciones</a>
+<a href="{% url 'solicitar_permiso' %}">Nueva solicitud</a>
+<a href="{% url 'notificaciones' %}">Notificaciones {% if notificaciones_pendientes %}({{ notificaciones_pendientes }}){% endif %}</a>
+{% if perfil_actual.rol == 'jefe' or perfil_actual.rol == 'rrhh' or perfil_actual.rol == 'contador' %}<div class="nav-label">SUPERVISIÓN</div><a href="{% url 'reportes' %}">Reportes de asistencia</a>{% endif %}
+{% if perfil_actual.rol == 'rrhh' %}<div class="nav-label">ADMINISTRACIÓN</div><a href="{% url 'empleados' %}">Colaboradores</a><a href="{% url 'auditoria' %}">Auditoría</a><a href="/admin/">Django Admin</a>{% endif %}
+<div class="nav-footer">Sistema académico · Caso 3</div></nav>{% endif %}
+<main class="content {% if not request.user.is_authenticated %}full{% endif %}">
+{% if recordatorio_entrada %}<div class="alert warning"><strong>Recordatorio:</strong> Hoy es un día laborable y todavía no registraste tu entrada.</div>{% endif %}
+{% for m in messages %}<div class="alert {% if m.tags == 'error' %}danger{% else %}success{% endif %}">{{ m }}</div>{% endfor %}
+{% block content %}{% endblock %}
+</main></div><footer>© 2026 TecnoAndes S.A.C. · Prototipo académico · Ingeniería de Sistemas</footer></body></html>
