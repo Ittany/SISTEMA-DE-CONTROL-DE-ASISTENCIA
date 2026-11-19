@@ -265,23 +265,23 @@ Vista del historial personal y de las opciones de marcación del empleado.
 
 Prueba de un usuario sin autorización que intenta abrir una sección de reportes fuera de sus permisos.
 
-![Evidencia 18: 10.7. Intento de acceso a reportes restringidos](capturas/Captura18.png)
+![Evidencia 18: 10.7. Intento de acceso a reportes restringidos](capturas/Captura20.png)
 
 ### 10.8. Control de acceso: 403 Forbidden
 
 Pantalla de acceso denegado que demuestra la restricción de funciones por rol.
 
-![Evidencia 19: 10.8. Control de acceso: 403 Forbidden](capturas/Captura19.png)
+![Evidencia 19: 10.8. Control de acceso: 403 Forbidden](capturas/Captura20.png)
 
 ### 10.9. Permisos del empleado: consulta y solicitud sin aprobación
 
 Verificación de que el empleado puede consultar y registrar sus propias solicitudes, pero no aprobarlas.
 
-![Evidencia 20: 10.9. Permisos del empleado: consulta y solicitud sin aprobación](capturas/Captura20.png)
+![Evidencia 20: 10.9. Permisos del empleado: consulta y solicitud sin aprobación](capturas/Captura21.png)
 
 ### 10.10. Prueba de cookies de sesión
 
 Evidencia de la cookie de sesión generada por Django y de sus atributos de seguridad, examinados con las herramientas del navegador.
 
-![Evidencia 21: 10.10. Prueba de cookies de sesión](capturas/Captura21.png)
+![Evidencia 21: 10.10. Prueba de cookies de sesión](capturas/Captura23.png)
 
